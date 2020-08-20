@@ -13,7 +13,10 @@
   color: #737373;
   visibility: hidden;
 }
-.note-item-toolbar:hover .noteIcon{
+.note-item-toolbar:hover .noteIcon,
+.note-item-toolbar:active .noteIcon,
+.note-item-toolbar:focus .noteIcon,
+.note-item-toolbar::selection .noteIcon {
 	visibility: visible;
 	display: flex;
 	cursor: pointer;

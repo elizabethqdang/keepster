@@ -3,18 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.1",
     "axios": "^0.20.0",
+    "babel-loader": "^8.1.0",
     "cra-template": "1.0.3",
     "css-loader": "^4.3.0",
     "lodash": "^4.17.20",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "react-masonry-component": "^6.2.1",
+    "react-masonry-css": "^1.0.14",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.0",
     "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
+    "start": "^5.1.0",
     "styled-components": "^5.2.0"
   },
   "scripts": {
@@ -22,8 +30,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "postinstall": "webpack --mode=development",
-    "webpack": "webpack --watch --mode=development"
+    "webpack": "webpack --mode=development --watch",
+    "postinstall": "webpack"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -41,6 +49,6 @@
     ]
   },
   "devDependencies": {
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^4.1.0"
   }
 }

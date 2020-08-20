@@ -11,8 +11,8 @@
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  overflow-y: hidden;
+  /* align-items: center; */
+  overflow: scroll;
   opacity: .85;
 }
 
@@ -20,37 +20,99 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* position: ; */
   background-color: #fff;
   width: 600px;
-  height: auto;
-  padding: 25px;
-  margin: 76px 0 30px;
-  top: 0;
-  left: 0;
+	height: auto;
+	min-height: 100px;
+  padding: 16px;
+  margin: auto;
+  top: 30px;
+	bottom: 30px;
   /* transform: translate(-50%, -50%); */
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
-  background-size: 30% 30%;
+  /* background-size: 30% 30%;
   background-repeat: no-repeat;
-  background-position: top;
+  background-position: top; */
   /* text-align: center; */
-  overflow-y: auto;
+  /* overflow: auto; */
 	z-index: 2000;
 	opacity: 1;
+	display: flex;
+	flex-flow: column nowrap;
+	overflow: auto;
+	overflow-x: hidden;
+	position: relative;
 }
 
 
 
-
-.note-modal {
+.modal-child > div {
+	width: 100%;
+}
+.note-modal * {
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: flex-start;
 	background-color: white;
 	opacity: 1;
-	z-index: 3000;
+	z-index: 3000;styl
 	overflow-wrap: break-word;
 	line-break: normal;
 	width: 600px;
+	height: auto;w
+	max-height: 695px;
+	padding: 16px;
+	margin: 30px auto auto;
+	/* overflow: visible; */
+	top: 64px;
+	/* position: fixed; */
 }
-.note-modal-footer,
+.note-modal-header * {
+	position: static;
+	min-height: 43px;
+}
+.note-modal-header .note-modal-title {
+	font-family: 'Google Sans', Roboto, Arial, sans-serif;
+	font-size: 22px;
+	word-break: break-all;
+	line-height: 18px;
+	font-weight: 400;
+}
+.note-modal-header .note-modal-title button {
+	/* position: absolute; */
+}
+.note-modal-header,
+.note-modal-body {
+	width: 100%;
+	min-height: 43px;
+	height: auto;
+	overflow: auto;
+	/* position: relative; */
+	letter-spacing: 0.1px;
+	padding: 4px 16px 12px;
+}
+.note-modal-body {
+	font-size: 16px;
+	/* padding: 4px 16px 12px; */
+	word-break: break-all;
+	line-height: 16px;
+	font-family: 'Roboto', Arial, sans-serif;
+	font-weight: 400;
+}
+.note-modal-timestamp {
+	text-align: right;
+	font-size: 12px;
+	font-family: 'Roboto', Arial, sans-serif;
+	padding: 5px 10px;
+	margin: 6px 15px 0 auto;
+}
+.note-modal-footer {
+	/* position: relative; */
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+}
+.note-modal-header, 
 .note-modal-toolbar {
 	display: flex;
 	flex-flow: row nowrap;

@@ -19,7 +19,8 @@
   cursor: text;
 }
 
-.noteFormIcons {
+.noteFormIcons,
+.pinIcon {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -154,6 +155,7 @@ textarea:active, textarea::after, textarea::selection, textarea:focus {
   background-color: #00000014;
 }
 
-.image-upload > input {
+.index-item-toolbar-img > input, .image-upload > input,
+.color-palette > input {
   display: none;
 }

@@ -1,5 +1,5 @@
 nav#navbar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -18,9 +18,9 @@ nav#navbar {
 }
 
 nav#nav-container {
-  position: absolute;
+  position: fixed;
   overflow-x: visible;
-  max-width: 1240px;
+  /* max-width: 1240px; */
   width: 100%;
   height: 100%;
   max-height: 64px;
@@ -57,8 +57,9 @@ nav.nav {
 nav#nav-btns-container {
   top: 0;
   line-height: 1.5;
-  display: inline-flex;
-  width: 1240px;
+	display: inline-flex;
+	width: 100%;
+  /* width: 1240px; */
   justify-content: space-evenly;
   align-items: center;
   vertical-align: middle;
@@ -75,15 +76,16 @@ nav#nav-btns-container {
   /* flex-flow: row nowrap; */
   color: #ccc;
   flex: .75;
-  /* justify-content: flex-start; */
+	/* justify-content: flex-start; */
+	padding: 0 15px;
 }
 
 .nav-logo {
   display: inline-block;
   color: rgba(60, 64, 67, 0.08);
   background-size: 68px auto;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   max-width: 50px;
   height: 64px;
   background-color: rgba(60, 64, 67, 0.08);
@@ -97,14 +99,17 @@ nav#nav-btns-container {
 	align-content: center;
 }
 .nav-logo img {
-  width: 40px;
-	height: 40px;
+  width: 44px;
+	height: 44px;
 	/* position: fixed; */
 	padding: 0;
 }
 .nav-logo-text {
 	padding: 12px 10px;
 	text-align: left;
+	font-size: 22px;
+	line-height: 24px;
+
 }
 
 .nav-collection,
@@ -275,8 +280,8 @@ i {
 .nav-user-image {
   margin-top: -2px;
   margin-right: 10px;
-  height: 26px;
-  width: 26px;
+  height: 32px;
+  width: 32px;
   /* background-image: image-url(); */
   background-repeat: no-repeat;
   background-size: cover;
@@ -299,8 +304,8 @@ i {
 
 .nav-user-image span {
   display: block;
-  height: 26px;
-  width: 26px;
+  height: 32px;
+  width: 32px;
   background-size: cover;
   color: black;
   background-position: 50% 50%;
@@ -396,7 +401,7 @@ li.dropdown {
 .nav-messages,
 .nav-menu {
   color: black;
-  width: 40px;
+  width: 48px;
   height: 64px;
   opacity: 0.75;
   display: block;
