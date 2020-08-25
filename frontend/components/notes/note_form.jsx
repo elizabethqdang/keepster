@@ -1,26 +1,51 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 class NoteForm extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			clicked: false,
 			title: "",
 			body: "",
-			form: false,
-			done: false
+			color: "#fffff",
+			image: null,
+			pinned: false,
+			created_at: "",
+			updated_at: "",
+			owner: this.props.currentUser,
+			defaultForm: true,
+			clicked: false,
 		};
+		this.handleClickOnDefaultForm = this.handleClickOnDefaultForm.bind(this);
 		this.toggleClicked = this.toggleClicked.bind(this);
 		this.handleOuterClick = this.handleOuterClick.bind(this);
-		this.handleDotClick = this.handleDotClick.bind(this);
+		this.isClassDefaultForm = this.isClassDefaultForm.bind(this);
+		this.isClassExpandedForm = this.isClassExpandedForm.bind(this);
 		this.toggleForm = this.toggleForm.bind(this);
-		this.hideForm = this.hideForm.bind(this);
+		this.colorPalette = this.colorPalette.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
-		this.submit = this.handleSubmit.bind(this);
+		this.update = this.update.bind(this);
+		this.submitForm = this.submitForm.bind(this);
+	}
+
+	handleClickOnDefaultForm(e) {
+		e.stopPropagation();
+		// const defaultClassName =(element) => {
+		// 	element.className === 'noteDefaultForm';
+		// }
+
+		// if click on default form => form expands and event listeners added for keydowns in form input and clicks made outside of form
+		// if (this.state.defaultForm && e.path.some(defaultClassName)) {
+			this.toggleForm();
+			document.addEventListener('keydown', this.handleKeyDown);
+			document.addEventListener('mousedown', this.handleOuterClick);
 	}
 
 	toggleClicked() {
 		this.setState({ clicked: !this.state.clicked });
+	}
+
+	toggleForm() {
+			this.setState({ defaultForm: !this.state.defaultForm });
 	}
 
 	isClassDefaultForm(element) {
@@ -31,86 +56,87 @@ class NoteForm extends React.Component {
 		return element.className === 'noteExpandedForm';
 	}
 
+	// if escape key pressed => stop listening for events outside of the form, disable form input, and 
 	handleKeyDown(e) {
 		if (e.key === 'Escape') {
 			document.removeEventListener('mousedown', this.handleOuterClick);
 			document.removeEventListener('keydown', this.handleKeyDown);
-			this.toggleClicked();
+			
+			this.toggleForm();
+			}
 		}
-		//   else if (e.key === 'Enter') {
-		//   this.handleSubmit(e);
-		// }
-	}
 
 	handleOuterClick(e) {
-		if (this.state.clicked && e.path.some(this.isClassExpandedForm)) {
+		const expandedClassName = (element) => {
+			return element.className === "noteExpandedForm";
+		}
+
+		// if click on expanded form => stop event from bubbling up to parent handlers
+		if (!this.state.defaultForm && e.path.some(this.isClassExpandedForm)) {
 			e.stopPropagation();
 		} else {
 			document.removeEventListener('mousedown', this.handleOuterClick);
 			document.removeEventListener('keydown', this.handleKeyDown);
-			this.toggleClicked();
-			this.submit();
-		}
-	}
 
-	handleDotClick(e) {
-		e.stopPropagation();
-		this.setState({ color: e.currentTarget.style.backgroundColor });
+			this.submitForm();
+		}
 	}
 
 	update(property) {
 		return e => this.setState({ [property]: e.target.value });
 	}
 
-	toggleForm(e) {
-		e.preventDefault();
-		this.setState({ form: !this.state.form })
+	toggleForm() {
+		// e.preventDefault();
+		this.setState({ defaultForm: !this.state.defaultForm })
 	}
 
-	hideForm(e) {
-		e.preventDefault();
-		this.setState({ form: false })
-	}
-
-	submit() {
-		if ((Boolean(this.state.title) || Boolean(this.state.body))) {
-			this.props.createNote({
-				id: this.props.currentUser,
+	submitForm() {
+		if ((this.state.title !== "") || (this.state.body !== "")) {
+			this.props.receiveNote({
+				// id: this.props.currentUser,
 				title: this.state.title,
-				body: this.state.body
+				body: this.state.body,
+				created_at: Date (new Date().getTime()),
+				updated_at: "",
+				pinned: this.state.pinned,
+				color: this.state.color,
+				image: null,
+				owner: this.props.currentUser
 			});
-			this.setState({ title: "", body: "" });
-		} else {
-			this.setState({ title: "", body: "" });
 		}
-		return false;
+		this.toggleForm();
+		this.setState({ title: "", body: "", pinned: "false", created_at: "", updated: "", color: "white", image: "null", owner: "",  });
 	}
-
 
 	handleSubmit(e) {
 		e.preventDefault();
 		e.stopPropagation();
-		this.toggleClicked();
 
 		document.removeEventListener('mousedown', this.handleOuterClick);
 		document.removeEventListener('keydown', this.handleKeyDown);
 		
-		const uniqueId = new Date().getTime();
-		const note = Object.assign({}, this.state, { id: uniqueId });
-		this.props.receiveNote(note);
-		this.setState({
-			title: "",
-			body: ""
-		}); // reset form
-		
-		this.submit();
+		this.submitForm();
+	}
+
+	colorPalette() {
+		const colors = ["#ffffff", "#f28b82", "#fbbc04", "#fff475", "#ccff90", "#a7ffeb", "#cbf0f8", "#aecbfa", "#d7aefb", "#fdcfe8", "#e6c9a8", "#e8eaed"];
+
+		colors.map(color, idx => {
+			return (
+				<div id={idx} className="" style={{ backgroundColor: color, width: "18px", height: "18px", borderRadius: "50%" }}>
+				</div>
+			)
+		});
 	}
 
 	render() {
 		const expandedForm = (
 			<form className="noteExpandedForm"
 				id='newForm'
-				onSubmit={(e) => this.handleSubmit(e)}>
+				onSubmit={(e) => this.handleSubmit(e)}
+				style={{backgroundColor:this.state.color}}>
+				<div>{this.state.image ? this.state.image : ""}</div>
 				<div className='titleDiv'>
 					<textarea
 						type="text"
@@ -123,7 +149,7 @@ class NoteForm extends React.Component {
 						rows="1"
 						style={{width:"600px"}}
 						autoFocus />
-					<div className='noteFormIcons'>
+					<div className='pinIcon'>
 						<div className="undone"></div>
 					</div>
 				</div>
@@ -166,18 +192,12 @@ class NoteForm extends React.Component {
 							<label for="colorIcon">
 								<i class="fas fa-palette"></i>
 							</label>
-							{/* <select id="colorIcon">
-								<option value="0">blue</option>
-								<option value="1">pink</option>
-								<option value="2">green</option>
-								<option value="3">red</option>
-							</select> */}
 						</div>
-						<div className="image-upload noteIcon">
-							<label for="imgIcon">
-								<i class="far fa-image"></i>
+						<div className="img-upload noteIcon">
+							<label for="uploadImgIcon">
+								<i class="fa fa-picture-o"></i>
 							</label>
-							<input id="imgIcon" type="file" />
+							{/* <input id="uploadImgIcon" type="image" /> */}
 						</div>
 						<div className="archive-btn noteIcon">
 							<label for="archiveIcon">
@@ -187,7 +207,7 @@ class NoteForm extends React.Component {
 						</div>
 					</div>
 					<div className='bottomClose'>
-						<button>CLOSE</button>
+						<button type="submit">CLOSE</button>
 					</div>
 				</div>
 			</form>
@@ -195,11 +215,12 @@ class NoteForm extends React.Component {
 
 		const defaultForm = (
 			<div className="noteDefaultForm" onClick={(e) => {
-				e.stopPropagation();
-				this.toggleClicked();
-				document.addEventListener('mousedown', this.handleOuterClick);
-				document.addEventListener('keydown', this.handleKeyDown);
-			}}>
+				{
+					e.stopPropagation();
+					this.toggleForm();
+					document.addEventListener('mousedown', this.handleOuterClick);
+					document.addEventListener('keydown', this.handleKeyDown)
+				}}}>
 				<p>Take a note... </p>
 				<div className='noteFormIcons'>
 					<i class="far fa-check-square fa-lg"></i>
@@ -209,13 +230,18 @@ class NoteForm extends React.Component {
 		);
 
 
-		if (this.state.clicked) {
+		if (this.state.defaultForm) {
 			return (
-				<div>{expandedForm}</div>
+				<Fragment>
+					{defaultForm}
+				</Fragment>
 			)
 		} else {
 			return (
-				<div>{defaultForm}</div>
+				<Fragment>
+					{expandedForm}
+				</Fragment>
+				
 			)
 		}
 
