@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
 				// id: window.currentUser.id,
 				currentUser: window.currentUser,
 			},
-			users: { [window.currentUser.id]: window.currentUser }
 		};
 		store = configureStore(preloadedState);
 		delete window.currentUser;

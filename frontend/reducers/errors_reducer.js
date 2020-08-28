@@ -1,5 +1,5 @@
 import { RECEIVE_SESSION_ERRORS, RECEIVE_CURRENT_USER, CLEAR_SESSION_ERRORS } from '../actions/session_actions';
-import { RECEIVE_NOTE, RECEIVE_NOTE_ERRORS } from '../actions/note_actions';
+import { RECEIVE_NOTE, NOTE_ERROR } from '../actions/note_actions';
 
 const errorsReducer = (state = {}, action) => {
 	Object.freeze(state);
@@ -11,7 +11,7 @@ const errorsReducer = (state = {}, action) => {
 			return [];
 		case CLEAR_SESSION_ERRORS:
 			return {};
-		case RECEIVE_NOTE_ERRORS:
+		case NOTE_ERROR:
 			return { notes: action.errors };
 		case RECEIVE_NOTE:
 			return [];

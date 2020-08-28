@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux';
 
-import todosReducer from './todos_reducer';
-import stepsReducer from './steps_reducer';
+import notesReducer from './notes_reducer';
+import sessionReducer from './session_reducer';
+// import errorsReducer from './errors_reducer';
 
 const rootReducer = combineReducers({
-  todos: todosReducer,
-  steps: stepsReducer
+  notes: notesReducer,
+	session: sessionReducer,
+	// errors: errorsReducer
 });
 
 export default rootReducer;
