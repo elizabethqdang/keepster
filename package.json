@@ -1,0 +1,31 @@
+{
+  "name": "keepster",
+  "version": "1.0.0",
+  "description": "Google Keep Clone",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack --mode=development",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elizabethqdang/keepster.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elizabethqdang/keepster/issues"
+  },
+  "homepage": "https://github.com/elizabethqdang/keepster#readme",
+  "dependencies": {
+    "react": "^16.13.1",
+    "redux": "^4.0.5"
+  },
+  "devDependencies": {
+    "dotenv": "^6.2.0",
+    "eslint-plugin-react": "^7.12.4"
+  }
+}
