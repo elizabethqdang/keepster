@@ -1,31 +1,32 @@
 {
-  "name": "keepster",
-  "version": "1.0.0",
-  "description": "Google Keep Clone",
-  "main": "index.js",
+  "name": "keepster2",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "cra-template": "1.0.3",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.3"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": "webpack --mode=development",
+    "start": "react-scripts start",
     "build": "react-scripts build",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/elizabethqdang/keepster.git"
+  "eslintConfig": {
+    "extends": "react-app"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/elizabethqdang/keepster/issues"
-  },
-  "homepage": "https://github.com/elizabethqdang/keepster#readme",
-  "dependencies": {
-    "react": "^16.13.1",
-    "redux": "^4.0.5"
-  },
-  "devDependencies": {
-    "dotenv": "^6.2.0",
-    "eslint-plugin-react": "^7.12.4"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
