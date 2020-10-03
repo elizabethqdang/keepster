@@ -20,3 +20,11 @@ export const logout = () => {
 		url: '/api/session'
 	}
 };
+
+export const fetchCurrentUser = currentUserId => {
+	return {
+		method: 'GET',
+		url: `/api/users/${currentUserId}`,
+		data: { currentUser: currentUserId }
+	}
+};

@@ -209,7 +209,8 @@ input:focus::-webkit-input-placeholder {
 	width: 600px;
 	height: auto;
 	margin: auto;
-	border: 1px solid gray;
+	border: 1px solid #e0e0e0;
+	box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302),0 2px 6px 2px rgba(60,64,67,0.149);
 	border-radius: 3px;
 	justify-content: center;
 }
@@ -218,10 +219,9 @@ form.note-form-container {
 	flex-flow: column nowrap;
 	width: 100%;
 	margin: auto;
-	/* box-shadow:  */
 	padding: 32px auto 16px auto;
-	justify-content: space-between;
-	justify-content: center;
+	/* justify-content: space-between; */
+	/* justify-content: center; */
 }
 .note-form.row {
 	width: 100%;
@@ -232,6 +232,7 @@ form.note-form-container {
 .note-form.row.footer {
 	width: 100%;
 	display: flex;
+	position: relative;
 	flex-flow: row nowrap;
 	justify-content: space-between;
 	padding: 0;
@@ -246,7 +247,6 @@ form.note-form-container {
 	height: 100%;
 	padding: 0;
 	margin: 0 8px;
-	/* justify-content: ; */
 }
 .note-form.row.footer input[type="submit"] {
 	right: 0;
@@ -264,32 +264,45 @@ input.note-form.title, div.note-form.row.footer {
 	margin: 0;
 	position: relative;
 }
-.note-form.row.note > textarea.note-form.note {
+.note-form.row.note > textarea.note-form.note, input[type="textarea"].note-form:placeholder-shown {
 	height: 46px;
+	background-clip: padding-box;
 	box-sizing: border-box;
+	box-shadow: 0 3px 5px rgba(0,0,0,0.20);
+	border-radius: 8px;
+	border-width: 1px 1px 1px 6px;
+	border-color: #e0e0e0;
+	border: 1px solid transparent;
 	font-family: 'Roboto', Arial, sans-serif;
+	color: #202124;
 	font-size: 14px;
 	line-height: 19px;
-	position: absolute;
-	padding: 0;
+	/* position: absolute; */
+	padding: 10px 15px;
 	width: 600px;
 	word-wrap: break-word;
 	justify-content: center;
 	background-color: #FFF;
-	transition: box-shadow .218s ease-in-out, background-color .218s ease-in;
-	margin: auto;
+	transition-property: background,border, opacity, box-shadow,transform;
+	transition: background-color .218s linear,opacity .218s linear,transform .218s linear;
+	margin: 65px auto;
 	left: 0;
 	right: 0;
-	/* top: 0; */
+	top: 0;
+	resize: none;
+	z-index: 5;
+	outline: none;
 }
-textarea.note-form.note:focus, textarea.note-form.note:valid {
-	position: relative;
+/* textarea.note-form.note:active, textarea.note-form.note:focus, textarea.note-form.note:valid,  */
+input[type="textarea"].note-form.note:focus, .note-form input[type="textbox"]:valid {
+	/* position: relative; */
 	width: 600px;
 	border: none;
-	padding: 0;
-	vertical-align: text-top;
-	text-align: start;
+	outline: none;
+	/* padding: 0; */
+	/* vertical-align: text-top; */
+	/* text-align: start; */
 	word-wrap: break-word;
-	resize: vertical;
 	height: auto;
+	overflow: visible;
 }

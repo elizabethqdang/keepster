@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import NoteForm from '../notes/note_form';
 import NoteIndex from '../notes/note_index';
+import Navbar from '../navbars/navbar_container';
 
 class KeepsterHome extends React.Component {
 	constructor(props) {
@@ -14,6 +15,7 @@ class KeepsterHome extends React.Component {
 	render() {
 		return (
 			<div clasName="">
+				<Navbar />
 				<NoteForm />
 				<NoteIndex />
 			</div>

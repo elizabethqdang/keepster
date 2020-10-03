@@ -34,3 +34,10 @@ export const logout = () => dispatch => (
     dispatch(receiveCurrentUser(null))
   ))
 );
+
+export const fetchCurrentUser = currentUserId => dispatch => {
+	return SessionAPIUtil.fetchCurrentUser(currentUserId).then(currentUser => {
+		dispatch(receiveCurrentUser(currentUser));
+		// return currentUser;
+	});
+};

@@ -17,8 +17,8 @@ class NoteForm extends React.Component {
 					<input type="text" placeholder="Title" className="note-form title" />
 				</div>
 				<div className="note-form row note">
-					{/* <input type="textarea" placeholder="Take a note..." className="note-form note"/> */}
-					<textarea placeholder="Take a note..." className="note-form note" />
+					<input type="textarea" aria-multiline="true" role="textbox" placeholder="Take a note..." className="note-form note"/>
+					{/* <textarea placeholder="Take a note..." className="note-form note"></textarea> */}
 				</div>
 				<div className="note-form row footer">
 					<div className="note-form toolbar">
