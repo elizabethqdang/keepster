@@ -8,36 +8,33 @@ export const receiveCurrentUser = currentUser => ({
   currentUser
 });
 
-export const receiveErrors = errors => ({
+export const receiveSessionErrors = errors => ({
   type: RECEIVE_SESSION_ERRORS,
   errors
 });
 
 export const signup = user => dispatch => (
-  SessionAPIUtil.signup(user).then(user => (
-    dispatch(receiveCurrentUser(user))
-  ), err => (
-    dispatch(receiveErrors(err.responseJSON))
-  ))
-);
+  SessionAPIUtil.signup(user).then(
+		user => (dispatch(receiveCurrentUser(user))), 
+		errors => (dispatch(receiveSessionErrors(errors.responseJSON)))
+  ));
 
 export const login = user => dispatch => (
-  SessionAPIUtil.login(user).then(user => (
-    dispatch(receiveCurrentUser(user))
-  ), err => (
-    dispatch(receiveErrors(err.responseJSON))
-  ))
-);
+  SessionAPIUtil.login(user).then(
+		user => (dispatch(receiveCurrentUser(user))), 
+		errors => (dispatch(receiveSessionErrors(errors.responseJSON)))
+  ));
 
 export const logout = () => dispatch => (
-  SessionAPIUtil.logout().then(user => (
-    dispatch(receiveCurrentUser(null))
+  SessionAPIUtil.logout().then(
+		user => (dispatch(receiveCurrentUser(null)),
+		errors => (dispatch(receiveSessionErrors(errors.responseJSON)))
   ))
 );
 
 export const fetchCurrentUser = currentUserId => dispatch => {
-	return SessionAPIUtil.fetchCurrentUser(currentUserId).then(currentUser => {
-		dispatch(receiveCurrentUser(currentUser));
+	return SessionAPIUtil.fetchCurrentUser(currentUserId).then(
+		currentUser => {dispatch(receiveCurrentUser(currentUser))}
 		// return currentUser;
-	});
+	)
 };
