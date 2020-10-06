@@ -1,7 +1,7 @@
-export const createNote = (note, userId) => {
+export const createNote = (note) => {
 	return {
 		method: 'POST',
-		url: `/api/${userId}/notes`,
+		url: `/api/notes`,
 		processData: false,
 		contentType: false,
 		dataType: 'json',

@@ -11,7 +11,7 @@ class NoteIndex extends React.Component {
 
 	render() {
 		return (
-			<div clasName="">
+			<div className="">
 
 			</div>
 		)

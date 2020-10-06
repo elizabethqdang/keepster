@@ -5,8 +5,8 @@ import LoginForm from './session/login_form';
 import SignupForm from './session/signup_form';
 import KeepsterHome from './keepster/keepster_home';
 // import logo from './logo.svg';
-// import '../App.css'
-// import '../index.css'
+import '../App.css'
+import '../index.css'
 
 const App = () => {
   return (

@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
 import { Link, withRouter, NavLink } from 'react-router-dom';
-import '../../../src/index.css'
-import '../../../src/App.css'
+import './navbar.css';
+// import '../../../src/index.css'
+// import '../../../src/App.css'
 
 class Navbar extends React.Component {
 	constructor(props) {
@@ -32,7 +33,7 @@ class Navbar extends React.Component {
 	navLeft() {
 		return (
 			<Fragment>
-				<Link to="/" classname="nav-logo">
+				<Link to="/" className="nav-logo">
 					Keepster
 				</Link>
 			</Fragment>
@@ -46,7 +47,7 @@ class Navbar extends React.Component {
 				</NavLink>
 				<NavLink exact to="/" className="nav-user-menu" activeClassName="selected">
 				
-					<li class="dropdown">
+					<li className="dropdown">
 						<div className="nav-user-button dropbtn">
 							<div className="nav-user-username truncate dropbtn">
 								{currentUser.email || "USER NAME"}
@@ -73,6 +74,7 @@ class Navbar extends React.Component {
 			</Fragment>
 		)
 	}
+
 	render() {
 		const { currentUser, logout } = this.props;
 		let navLeft = this.navLeft();

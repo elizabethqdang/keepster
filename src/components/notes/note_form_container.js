@@ -1,7 +1,8 @@
 import React from 'react';
-import { connect } from 'react-router-dom';
+import { connect } from 'react-redux';
 import NoteForm from './note_form';
 import { createNote, deleteNote } from '../../actions/note_actions';
+import { bindActionCreators } from 'redux';
 
 const mapStateToProps = (state) => ({
 	currentUser: state.session.currentUser || {},
@@ -10,8 +11,12 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-	createNote: (note, userId) => dispatch(createNote(note, userId)),
+	createNote: (note) => dispatch(createNote(note)),
 	deleteNote: (noteId) => dispatch(deleteNote(noteId))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(NoteForm);
+export function mapDispatchToStore(dispatch) {
+	return bindActionCreators({ createNote }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToStore)(NoteForm);
