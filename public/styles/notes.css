@@ -5,11 +5,11 @@
   align-items: center;
   background-color: #fafafa;
   font-size: 15px;
-  padding: 5px 20px;
+  padding: 0 20px;
   width: 600px;
   height: 48px;
   box-shadow: 0 1px 6px #9c9c9c;
-  margin: 3px;
+  margin: 3px auto;
   color: #737373;
   font-family: 'Roboto Slab', serif;
   font-weight: 10;
@@ -24,15 +24,20 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 80px;
+	/* width: 80px; */
+	height: 46px;
+}
+.noteFormIcons > i {
+	width: 46px;
 }
 
 .noteFormIcon {
-  height: 25px;
-  width: 25px;
+  height: 34px;
+	width: 34px;
+	margin: 0 10px;
 }
 
-.noteClickedForm {
+.noteExpandedForm {
   color: #737373;
   background-color: #fafafa;
   display: flex;
@@ -42,38 +47,43 @@
   border-radius: 2px;
   width: 600px;
   box-shadow: 0 1px 6px #9c9c9c;
-  margin: 3px;
+  margin: 3px auto;
   min-height: 136px;
-  padding: 5px 20px 0 20px;
+  padding: 10px 15px;
 }
 
 .titleDiv {
+	height: 44px;
+}
+.titleDiv,
+textarea#titleForm {
   display: flex;
-  flex-direction: column;
+  flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 17px;
-  flex-wrap: wrap;
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
   color: black;
   width: 100%;
-  font-weight: bold;
-  margin-top: 10px;
+  font-weight: 400;
+  /* margin-top: 10px; */
 }
 
 #titleForm,
 #bodyForm {
-  width: 100%;
+	width: 600px;
   overflow-wrap: normal;
-  height: auto;
+	height: auto;
 }
 
 #bodyForm {
-  resize: none;
+	resize: none;
+	height: auto;
 }
 
-.bodyDiv {
-  font-family: 'Roboto Slab', serif;
+.bodyDiv, 
+#bodyForm textarea {
+  font-family: 'Roboto', Arial, sans-serif;
   font-size: 15px;
   display: flex;
   flex-direction: column;
@@ -82,10 +92,24 @@
   align-items: flex-start;
   color: black;
   width: 100%;
-  margin-top: 15px;
+	/* margin-top: 15px; */
+	line-break: 'anywhere';
 }
 
-.formBottom {
+#bodyForm textarea,
+textarea#titleForm {
+	width: 600px;
+	line-break: 50;
+	height: 100%;
+	resize: none;
+	border: none;
+}
+textarea:active, textarea::after, textarea::selection, textarea:focus {
+	border: none;
+	outline: none;
+}
+
+.formFooter {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -94,19 +118,22 @@
   height: 40px;
 }
 
-.bottomButtons {
+.toolbarBtns {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  width: 135px;
+	width: 100%;
+	height: 34px;
 }
 
 .noteIcon {
-  width: 18px;
-  height: 18px;
-  opacity: 2;
-  cursor: pointer;
+  width: 34px;
+  height: 34px;
+  opacity: .71;
+	cursor: pointer;
+	margin: 0 10px;
+	margin-right: 10px;
 }
 
 .bottomClose {

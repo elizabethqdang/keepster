@@ -29,10 +29,12 @@ li {
 }
 
 .app {
-  width: 40%;
-  min-width: 400px;
-  margin-top: 40px;
-  margin-bottom: 40px;
+	display: flex;
+  width: 1240px;
+  min-width: 600px;
+  margin: 64px auto;
+	justify-content: center;
+	height: 100%;
 }
 
 .flex-col,
@@ -106,7 +108,7 @@ a:focus {
 }
 
 .done {
-  background-color: #757575;
+  /* background-color: #757575; */
 }
 
 .undone {
@@ -136,23 +138,65 @@ a:focus {
   padding: 5px;
 }
 
+.todo-list {
+	height: auto;
+}
+li.todo-list-item {
+	position: relative;
+	cursor: default;
+}
 .todo-list .todo-list-item {
   background-color: #ffffff;
-  padding: 20px;
-  margin: 10px 0;
+  padding: 20px 20px 0;
+  margin: 10px 8px;
   border: 1px solid #e0e0e0;
-  border-radius: 5px;
+	border-radius: 5px;
+	width: 240px;
+	height: auto;
+	position: relative;
 }
 .todo-list .todo-list-item .todo-header {
   justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
+  /* align-items: center; */
+	/* cursor: pointer; */
+	max-height: 420px;
+	height: auto;
+}
+.todo-header.truncate, 
+.todo-header a.truncate {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.todo-header button {
+	margin-top: 0;
 }
 .todo-list .todo-list-item .todo-header a {
-  font-weight: bold;
+	font-weight: bold;
+	max-width: 200px;
+	max-height: 80px;
+	word-break: break-all;
+	line-break: auto;
+	word-wrap: break-word;
+	text-overflow: ellipsis;
+}
+.todo-list .todo-list-item .todo-header p {
+	max-width: 200px;
+	max-height: 300px;
+	word-break: break-all;
+	line-break: auto;
+	word-wrap: break-word;
+	text-overflow: ellipsis;
+	margin: 0 auto 10px;
+	overflow: hidden;
 }
 .todo-list .todo-list-item .todo-body {
-  margin: 10px;
+	margin: 0 auto 10px;
+	word-break: break-all;
+	line-break: auto;
+	word-wrap: break-word;
+	max-height: 300px;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .todo-form {
@@ -190,7 +234,7 @@ input.note-form {
 }
 
 a {
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .step-list {
@@ -209,4 +253,11 @@ a {
   border-radius: 5px;
   padding: 20px;
   margin: 20px 0;
+}
+
+.truncate {
+	overflow: hidden;
+	white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: break-all;
 }
