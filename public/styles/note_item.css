@@ -1,3 +1,28 @@
+.note-item-toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+	height: 34px;
+	padding-top: 10px;
+}
+.note-item-toolbar .noteIcon {
+  margin: 0 10px 0 0;
+  opacity: 0.71;
+  color: #737373;
+  visibility: hidden;
+}
+.note-item-toolbar:hover .noteIcon{
+	visibility: visible;
+	display: flex;
+	cursor: pointer;
+}
+.note-item-toolbar:hover i {
+	cursor: pointer;
+}
+
+
 .note-index-item-wrapper{
   width: 240px;
   margin-right: 16px;
@@ -12,7 +37,9 @@
 }
 
 .note-index-item{
-  width: 240px;
+	width: 240px;
+	height: auto;
+	max-height: 380px;
   cursor: default;
   box-sizing: border-box;
   display: flex;
@@ -259,12 +286,14 @@
   transition: opacity .65s;
 }
 
-.noteIcon {
+
+
+/* .noteIcon {
   width: 18px;
   height: 18px;
   opacity: 2;
   cursor: pointer;
-}
+} */
 
 .noteIcon:hover {
   color: #0000008a;
