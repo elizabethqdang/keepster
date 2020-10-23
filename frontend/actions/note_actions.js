@@ -19,6 +19,10 @@ export const removeNote = note => ({
   note,
 });
 
+// export const pinnedNotes = ({ notes }) =>
+
+// });
+
 export const allNotes = ({ notes }) => Object.keys(notes).map(id => notes[id]);
 
 export const noteError = error => ({
