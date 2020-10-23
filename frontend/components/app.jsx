@@ -1,13 +1,16 @@
 import React from 'react';
-import TodoListContainer from './todo_list/todo_list_container';
-import NavbarContainer from './navbars/navbar_container';
+// import LoginForm from './sessions/login_form_container';
+import Navbar from './navbar/navbar_container';
+// import NoteForm from './notes/note_form';
+import NoteIndexContainer from './notes/note_index_container';
 
 const App = () => (
-  <div className="app">
-    <h1></h1>
-		<NavbarContainer />
-    <TodoListContainer />
-  </div>
+	<div className="app">
+		<h1></h1>
+		
+		<Navbar />
+		<NoteIndexContainer />
+	</div>
 );
 
 export default App;

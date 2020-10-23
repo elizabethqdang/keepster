@@ -5,10 +5,10 @@ module.exports = {
 };
 
 module.exports = {
-	entry: "./src/index.js",
+	entry: "./frontend/keepster.jsx",
 	output: {
-		path: path.resolve(__dirname, "app", "assets", "javascripts"),
-		filename: "./bundle.js"
+		path: path.resolve(__dirname), 
+		filename: "bundle.js"
 	},
 	module: {
 		rules: [
